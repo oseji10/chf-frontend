@@ -1,0 +1,69 @@
+@import "../misc/config";
+
+.inline_search_box {
+    width: 95%;
+    max-width: 500px;
+    margin: 2em auto;
+    transition: all 400ms linear;
+    position: relative;
+    &.left{
+        margin: 2em 0px;
+        width: 100%;
+        max-width: 100%;
+    }
+    &.active {
+      top: -50px;
+    }
+    .input_wrapper {
+      width: 100%;
+      box-shadow: 0 0 10px darken($light-color, 20);
+      border: 2px solid darken($light-color, 10);
+      height: 40px;
+      background-color: $light-color;
+      input[type="text"] {
+        width: 90%;
+        border: none;
+        outline: none;
+        padding-left: 20px;
+        font-size: 8pt;
+      }
+      button {
+        width: 10%;
+        height: 100%;
+        background-color: $primary-color;
+        border: none;
+        outline: none;
+        transition: background-color 200ms linear;
+        font-size: 10pt;
+        &:hover {
+          background-color: darken($primary-color, 20);
+        }
+        &.clear_input_btn {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 10%;
+          border: 0;
+          background-color: $light-color;
+          z-index: 100;
+          &:hover {
+            background-color: darken($light-color, 5);
+            color: $danger-color;
+            font-weight: 700;
+          }
+        }
+      }
+    }
+  
+    .searchbox_dropdown {
+      background: $light-color;
+      width: 100%;
+      min-height: 30%;
+      box-shadow: 0 0 10px darken($light-color, 10);
+      padding: 1em;
+      position: relative;
+      top: 1px;
+    }
+  }
+
+  

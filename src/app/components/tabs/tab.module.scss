@@ -1,0 +1,135 @@
+@import "../misc/config";
+
+.tab {
+  display: block;
+  width: 100%;
+  .tab_nav {
+    width: 100%;
+    display: flex;
+    background-color: darken($white, 5);
+    .tab_link {
+      flex: 1 1 0;
+      padding: 1em 2em;
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      cursor: pointer;
+      color: $primary-color;
+      &:hover {
+        background-color: darken($white, 3);
+      }
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0%;
+        background-color: $primary-color;
+        z-index: -1;
+        transition: width 200ms linear;
+      }
+      &.active {
+        color: #f6f6f6;
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .tab_content {
+    position: relative;
+    .tab_pane {
+      padding: 1em;
+      position: absolute;
+      width: 100%;
+      transform: scale(0);
+      transition: transform 300ms linear;
+      &.active {
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+.tab_vertical {
+  display: flex;
+  width: 100%;
+  .tab_nav {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: darken($white, 5);
+    .tab_link {
+      flex: 1 1 0;
+      padding: 1em 2em;
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      cursor: pointer;
+      color: $primary-color;
+      &:hover {
+        background-color: darken($white, 3);
+      }
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0%;
+        background-color: $primary-color;
+        z-index: -1;
+        transition: width 200ms linear;
+      }
+      &.active {
+        color: #f6f6f6 !important;
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .tab_content {
+    position: relative;
+    width: 75%;
+    .tab_pane {
+      padding: 1em;
+      position: absolute;
+      width: 100%;
+      transform: scale(0);
+      transition: transform 300ms linear;
+      &.active {
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .tab_vertical {
+    display: block;
+    width: 100%;
+    .tab_nav {
+      width: 100%;
+    }
+    .tab_content {
+      position: relative;
+      width: 100%;
+    }
+  }
+
+  .tab {
+    .tab_nav {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+  }
+}

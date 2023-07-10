@@ -1,0 +1,84 @@
+@import '../misc/config';
+
+// .input_wrapper{
+//     background-color: $light-color;
+//     border: 2px solid darken($light-color,5);
+//     position: relative;
+//     margin-bottom: 10px;
+//     height: 30px;
+//     display: block;
+//     &.textarea{
+//         min-height: 100px;
+//         overflow: hidden;
+//         padding-top: 10px;
+        
+//     }
+    button{
+        border-radius: 0;
+    }
+    
+    textarea{
+        // position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        min-height: 100px;
+        padding: 20px;
+        color: red;
+    }
+    // .input_field, textarea{
+    //     outline: none;
+    //     border: 0;
+    //     font-size: 10pt;
+    //     width: 100%;
+    //     padding: 0 10px; 
+    //     height: 30px;
+    //     color: lighten($dark-color, 20);
+    //     background-color: $light-color !important;
+    //     &:not(textarea):focus {
+    //         background-color: darken($light-color,5);
+    //         outline-width: 0 !important;
+    //         border: 0 !important;
+    //         top: 0;
+    //         box-shadow: inset 0 -1px 0 #ddd;
+    //     }
+    // }
+
+    label{
+        // position: absolute;
+        // top: 30%;
+        // font-size: 8pt;
+        // padding-left: 20px;
+        // transition: 200ms linear;
+    }
+
+    input:focus + label{
+        top: 0;
+    }
+// }
+
+ .input_field, textarea{
+        outline: none;
+        border: 0;
+        font-size: 10pt;
+        width: 100%;
+        padding: 0 10px; 
+        height: 30px;
+        color: lighten($dark-color, 20);
+        background-color: $light-color !important;
+        &:not(textarea):focus {
+            background-color: darken($light-color,5);
+            outline-width: 0 !important;
+            border: 0 !important;
+            top: 0;
+            box-shadow: inset 0 -1px 0 #ddd;
+        }
+    }
+
+    textarea{
+        padding: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.342);
+    }

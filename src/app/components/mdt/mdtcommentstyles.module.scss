@@ -1,0 +1,34 @@
+.commentList::-webkit-scrollbar{
+    width: 0;
+}
+.commentList{
+    max-height: 80vh;
+    overflow-y: scroll;
+    background-color: #f9f9f9;
+    scrollbar-width: 0;
+    .commentItem{
+        cursor: pointer;
+        // background-color: red;
+        width: 100%;
+        padding: 10px;
+        border-bottom: 3px solid white;
+        transition: box-shadow 200ms linear;
+        &:hover{
+            background-color: white;
+            box-shadow: 0 0 10px rgba(30,120,30,.5);
+            
+        }
+        h3{
+            font-size: 10pt;
+        }
+        span{
+            display: block;
+            font-size: 9pt;
+            color: #444;
+            strong{
+                margin-right: 10px;
+            }
+            
+        }
+    }
+}

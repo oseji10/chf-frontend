@@ -1,0 +1,23 @@
+@import '../misc/config';
+
+.card{
+    margin: 0.2rem;
+    padding: 2rem;
+    text-align: left;
+    color: inherit;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba($color: darken($white, 20), $alpha: .5);
+    width: 100%;
+    position: relative;
+    background-color: white;
+    transition: color 0.15s ease, border-color 0.15s ease;
+    &::before, &::after{
+        display: block;
+        content: '';
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        z-index: -1;
+    }
+}

@@ -1,0 +1,39 @@
+export const APPROVED = 'APPROVED';
+export const DECLINED = 'DECLINED';
+export const PENDING = 'PENDING';
+export const ASSIGNED = 'ASSIGNED';
+export const IN_PROGRESS = 'IN PROGRESS';
+export const REVIEWED = 'REVIEWED';
+export const CMD_APPROVED = 'CMD APPROVED';
+export const CMD_DECLINED = 'CMD DECLINED';
+export const RECOMMENDED = 'RECOMMENDED'
+export const DOCTOR = 'DOCTOR';
+export const ACTIVE = 'ACTIVE';
+export const PROFILE_COMPLETED = 'PROFILE COMPLETED';
+export const INCOMPLETE_PROFILE = 'INCOMPLETE PROFILE';
+export const NOT_COMPLETED = "Not Completed"
+export const NOT_APPLICABLE = 'N/A';
+export const NOT_SELECTED = 'NOT SELECTED'
+export const PRIMARY = 'PRIMARY'
+export const SUCCESS = 'SUCCESS'
+export const WARNING = 'WARNING'
+export const DANGER = 'DANGER'
+export const INFO = 'INFO'
+export const YES = 'YES';
+export const NO = 'NO';
+export const AILMENT_TYPE = 'ailment_type';
+export const NO_DATA_MATCH = 'No data matched the criteria';
+export const INITIATED = 'INITIATED';
+export const DFA_RECOMMENDED = 'DFA_RECOMMENDED';
+export const PERMSEC_APPROVED = 'PERMSEC APPROVED';
+export const INACTIVE = 'INACTIVE';
+export const DECEASED = 'DECEASED';
+
+
+/* PERMISSIONS */
+export const COMMITTEE_RECOMMEND_FUND = 'COMMITTEE_RECOMMEND_FUND';
+export const APPROVE_FUND = 'APPROVE_FUND';
+export const APPROVE_FUND_RETRIEVAL = 'APPROVE_FUND_RETRIEVAL'
+export const SEND_DISPUTE_CHAT = 'SEND_DISPUTE_CHAT';
+export const VIEW_DISPUTE_CHAT = 'VIEW_DISPUTE_CHAT';
+export const REQUEST_FUND_RETRIEVAL = 'REQUEST_FUND_RETRIEVAL';

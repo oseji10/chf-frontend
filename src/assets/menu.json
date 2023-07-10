@@ -1,0 +1,45 @@
+[
+  {
+    "name": "FUND",
+    "icon": "fas fa-dungeon",
+    "link": "/chfadmin/application",
+    "permission": "VIEW_APPLICATION"
+  },
+  {
+    "name": "SERVICE",
+    "icon": "fab fa-connectdevelop",
+    "link": "/service",
+    "permission" : "VIEW_SERVICE"
+  },
+
+  {
+    "name": "PATIENT",
+    "icon": "fa fa-users",
+    "link": "/patient",
+    "permission" : "VIEW_PATIENT"
+  },
+  {
+    "name": "CHFADMIN",
+    "icon": "fab fa-critical-role",
+    "link": "#",
+    "permission" : "VIEW_CHFADMIN"
+  },
+  {
+    "name": "COE STAFF",
+    "icon": "fas fa-hotel",
+    "link": "#",
+    "permission" : "VIEW_COESTAFF"
+  },
+  {
+    "name": "PATIENT BILLING",
+    "icon": "fas fa-cog",
+    "link": "/coestaff/billing",
+    "permission": "VIEW_ALL_BILLING"
+  },
+  {
+    "name" : "BILLING HISTORY",
+    "icon" : "fas fas-cog",
+    "link" : "/mybilling",
+    "permission" : "APPLY_FUND"
+  }
+]

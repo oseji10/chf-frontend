@@ -1,0 +1,29 @@
+@import '../../misc/config';
+
+.block_button{
+    outline-width: 0;
+    border: 0;
+    width: 100%;
+    // max-width: 400px;
+    margin-top: 10px;
+    height: 40px;
+    background-color: darken($white, 5);
+    cursor: pointer;
+    font-size: 10pt;
+    font-weight: 700;
+    &:disabled{
+        background-color: darken($white, 10) !important;
+        color: darken($white, 50) !important;
+        cursor: auto;
+    }
+    &:hover{
+        background-color: darken($white, 10);
+    }
+    &.primary{
+        background-color: $primary-color;
+        color: $white;
+        &:hover{
+            background-color: darken($primary-color, 5);
+        }
+    }
+}

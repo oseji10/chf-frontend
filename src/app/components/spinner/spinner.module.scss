@@ -1,0 +1,94 @@
+.page_spinner{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    background-color: rgba(50,50,50,.7);
+    .circle_progress{
+        width: 100px;
+        height: 100px;
+        background-color: transparent;
+        position: relative;
+        svg, svg circle{
+            background-color: transparent;
+            top: 0; 
+            left: 0;
+            width: 100%;
+            height: 100%;
+            fill: transparent;
+            animation: circle 3s linear infinite;
+        }
+        svg{
+            circle{
+                stroke-width: 10;
+                stroke: #ace;
+                stroke-linecap: round;
+                transition: stroke-dasharray 300ms linear;
+                stroke-dasharray: 10;   
+            }
+        }
+    }
+}
+
+
+.component_spinner_wrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    .component_spinner, .component_spinner circle{
+        // position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        fill: transparent;
+        stroke: #454545;
+        stroke-width: 5;
+        stroke-linecap: round;
+        stroke-dashoffset: 10;
+        stroke-linecap: square;
+        stroke-dasharray: 15 ;
+        display: block;
+        
+    }
+    .component_spinner{
+        display: flex;
+    }
+    .component_spinner circle{
+        animation: component_spinner_rotate 1s linear infinite;
+
+    }
+}
+
+@keyframes component_spinner_rotate {
+    0%{
+        transform: rotate(0deg);
+    }
+    30%{
+        transform: rotate(180deg);
+    }
+    100%{
+        transform: rotate(359deg);
+    }
+}
+
+
+@keyframes circle {
+    50%{
+        stroke-dasharray: 10, 20, 30, 40, 50;
+    }
+    100%{
+        stroke-dasharray: 250;
+        stroke: greenyellow;
+        
+    }
+}

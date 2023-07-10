@@ -1,0 +1,46 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 13,
+        "sourceType": "module",
+        "requireConfigFile": false,
+        "babelOptions": {
+            "presets": [
+                "@babel/preset-react"
+            ]
+        }
+    },
+    "plugins": [
+        "react",
+        "react-hooks"
+    ],
+    "rules": {
+        "react/prop-types": "off",
+        "no-prototype-builtins": "off",
+        "react/react-in-jsx-scope": "off",
+        "no-unused-vars": "off",
+        "no-empty": "off",
+        "react-hooks/exhaustive-deps": "off",
+        "react/jsx-key": "off",
+        "react/no-unknown-property": "off",
+        "no-fallthrough": "off",
+        "no-undef": "off",
+        "no-irregular-whitespace": "off",
+        "no-empty-pattern": "off",
+        "no-unreachable": "off",
+        "no-unsafe-finally": "off",
+        "no-useless-catch": "off",
+        "no-useless-escape": "off"
+    }
+}

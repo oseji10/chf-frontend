@@ -1,0 +1,22 @@
+// $primary-color: #45da78;
+// $success-color: #45da78;
+$primary-color: green;
+$success-color: green;
+$danger-color: #df2222;
+$warning-color: #dada45;
+$info-color: #1b7eff;
+$purple-color: #7878ff;
+$pink-color: #ff78a1;
+$light-color: #ffffff;
+$dark-color: #000;
+$success-color: rgb(45,169,45);
+$white: #fff;
+$black: #000;
+
+$white: #ffffff;
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+*{
+    font-family: roboto;
+}

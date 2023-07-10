@@ -1,0 +1,63 @@
+@import '../misc/config';
+
+.alertList{
+    position: fixed;
+    top: 30vh;
+    right: 1em;
+    z-index: 5000;
+    .alertListItem{
+        &::after{
+            display: block;
+            content: '';
+            width: 20px;
+            height: 20px;
+            background-color: $white;
+            transform: rotate(45deg);
+            position: absolute;
+            top: 20%;
+            right: -10px;
+            z-index: -1;
+        }
+        background-color: $white;
+        padding: 10px;
+        margin-bottom: 10px;
+        display: block;
+        width: auto;
+        max-width: 400px;
+        font-size: 10pt;
+        font-weight: 700;
+        box-shadow: 0 0 4px darken($white, 20);
+        &.primary{
+            border-right: 3px solid darken($primary-color, 20);
+            background-color: darken($primary-color, 20);
+            color: $white;
+            &::after{
+                background-color: $primary-color;
+            }
+        }
+        &.danger{
+            border-right: 3px solid $danger-color;
+            background-color: $danger-color;
+            color: $white;
+            &::after{
+                background-color: $danger-color;
+            }
+        }
+        &.success{
+            border-right: 3px solid darken($success-color,20);
+            background-color: darken($success-color, 20);
+            color: $white;
+            &::after{
+                background-color: darken($success-color, 20);
+            }
+            // color: darken($success-color, 30);
+        }
+    }
+}
+
+
+@media screen and (max-width: 720px) {
+    .alertList{
+        // top: 1em;
+    }
+}

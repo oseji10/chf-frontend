@@ -1,0 +1,11 @@
+.title{
+    font-size: 1.5rem;
+    color: #128912;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 920px) {
+    .title{
+        font-size: 1rem;
+    }
+}

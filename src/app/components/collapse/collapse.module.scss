@@ -1,0 +1,15 @@
+@import '../misc/config';
+
+.collapse{
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    transition: height 300ms linear;
+    box-shadow: 0 0 10px $light-color;
+    padding: 0;
+    &.active{
+        height: 100px;
+        overflow: auto;
+        padding: 10px;
+    }
+}

@@ -1,0 +1,35 @@
+@import '../../misc/config';
+
+.tag {
+    padding: 3px 8px;
+    font-size: 8pt;
+    border-radius: 20px;
+    color: lighten($black, 30);
+    background-color: darken($light-color, 10);
+
+    &.danger {
+        background-color: lighten($danger-color, 40);
+        color: darken($danger-color, 30);
+        // color: lighten($danger-color, 30);
+    }
+
+    &.warning {
+        background-color: darken($warning-color, 20);
+        color: lighten($warning-color, 40);
+    }
+
+    &.primary {
+        background-color: darken($primary-color, 10);
+        color: lighten($primary-color, 40);
+    }
+
+    &.info {
+        background-color: darken($info-color, 10);
+        color: lighten(white, 40);
+    }
+
+    &.success {
+        background-color: lighten($success-color, 40);
+        color: darken($success-color, 30);
+    }
+}

@@ -1,0 +1,16 @@
+@import '../../misc/config';
+
+.text{
+    text-align: left;
+    margin: 15px auto;
+    font-size: 0.8em;
+    display: block;
+    color: lighten($black, 40);
+    font-weight: 300;
+}
+
+@media (max-width: 768px) {
+    .text{
+        font-size: 0.9em;
+    }
+}

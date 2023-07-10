@@ -1,0 +1,38 @@
+@import '../misc/config';
+
+.switch_container{
+    width: 30px;
+    height: 15px;
+    display: inline-block;
+    position: relative;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: darken($white, 30);
+    // border: 1px solid $black;
+    border-radius: 10px;
+    transition: background-color 300ms linear;
+    &.active{
+        background-color: darken($primary-color,10);
+        // border: 1px solid darken($primary-color, 10);
+        .switch_toggler{
+            left: 15px;
+            // box-shadow: 0 0 5px $white;
+            background-color: $white;
+        }
+    }
+
+    .switch_toggler{
+        border-radius: 10px;
+        cursor: pointer;
+        display: inline-block;
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 2.19px;
+        width: 10px;
+        height: 10px;
+        background-color: darken($white, 10);
+        transition: left 200ms linear;
+
+    }
+}

@@ -1,0 +1,103 @@
+@import '../../../components/misc/config';
+
+.role{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-weight: 700;
+    border-bottom: 2px solid $light-color;
+    .badge{
+        font-size: 8pt;
+        padding: 5px;
+        color: $light-color;
+        font-weight: 700;
+        margin-left: 10px;
+        cursor: pointer;
+        color: $light-color !important;
+        &.badge_success{
+            background-color: $primary-color;
+            &:hover{
+                background-color: darken($primary-color, 20);
+            }
+        }
+        &.badge_danger{
+            background-color: $danger-color;
+            &:hover{
+                background-color: darken($danger-color, 20);
+            }
+        }
+    }
+
+
+    a{
+        font-size: 8pt;
+        color: $dark-color;
+    }
+
+    &.active{
+        a:first-of-type{
+            color: $primary-color;
+        }
+        .permissions{
+            padding: 10px;
+            height: 200px;
+            overflow-x: hidden;
+        }
+    }
+    .permissions{
+        width: 100%;
+        background-color: $light-color;
+        box-shadow: 0 0 10px $light-color;
+        height: 0px;
+        margin-top: 10px;
+        transition: 200ms linear;
+        overflow-x: hidden;
+        word-wrap: break-word;
+        .permission_item{
+            padding: 3px 5px;
+            background-color: darken($light-color,30);
+            border-radius: 10px;
+            font-size: 6pt;
+            font-weight: 400;
+            box-shadow: 0 0 10px darken($light-color, 10);
+            span{
+                color: $danger-color;
+                cursor: pointer;   
+            }
+            a{
+                color: $danger-color;
+            }
+        }
+    }
+    
+}
+
+.side_permissions{
+    overflow-y: scroll;
+    height: 70vh;
+    .role{
+        a{
+            background-color: darken($light-color,50);
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            color: $light-color !important;
+            line-height: 20px;
+            &:hover{
+                background-color: $primary-color;
+
+            }
+        }
+    }
+    .side_permission_item{
+        font-size: 8pt;
+        display: block;;
+        display: flex;
+        justify-content: space-between;
+        span{
+            color: $info-color;
+            cursor: pointer;
+        
+        }
+    }
+}

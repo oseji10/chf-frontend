@@ -1,0 +1,139 @@
+@import "../../components/misc/config";
+
+.wrapper {
+  overflow-x: auto;
+}
+.table {
+  display: table;
+  width: 100%;
+  margin-top: 20px;
+  thead {
+    th {
+      border-top: none;
+      font-weight: 600;
+      padding: 10px 5px;
+      font-size: 9pt;
+    }
+  }
+  tbody {
+    background: $light-color;
+    tr {
+      border-top: 1px solid darken($light-color, 10);
+      display: table-row;
+      cursor: pointer;
+      background: darken($light-color, 1);
+      transition: all 200ms ease-in-out;
+      position: relative;
+      &.danger{
+        background-color: lighten($danger-color, 30);
+        &:hover{
+          background-color: lighten($danger-color, 0);
+          box-shadow: 0 0 10px rgba(100,100,100,.2);
+          color: $light-color;
+        }
+      }
+      
+      &.success{
+        background-color: lighten($success-color, 50);
+        &:hover{
+          background-color: $primary-color;
+          color: $light-color;
+        }
+      }
+      &:hover {
+        background: darken($light-color, 3);
+        box-shadow: 0 0 2px darken($primary-color, 2);
+      }
+      td {
+        font-size: 8pt;
+        padding: 10px 8px;
+        font-weight: 400;
+        position: relative;
+        &.status_indicator::after {
+          content: "";
+          display: block;
+          height: 5px;
+          position: absolute;
+          top: 30%;
+          border-radius: 50%;
+          left: -2%;
+          width: 5px;
+        }
+        &.status_indicator.success::after {
+          background: $primary-color;
+        }
+        &.status_indicator.warning::after {
+          background: $warning-color;
+        }
+        &.status_indicator.danger::after {
+          background: $danger-color;
+        }
+        &.status_indicator.info::after {
+          background: $info-color;
+        }
+      }
+    }
+  }
+}
+
+.application_table{
+  overflow-x: scroll;
+  table{
+      thead{
+          th{
+              border-top: none;
+              font-weight: 600;
+              font-size: 9pt;
+          }
+      }
+      tbody{
+          background: $light-color;
+          tr{
+              border-top: 1px solid darken($light-color, 10);
+              cursor: pointer;
+              transition: all 200ms linear;
+              position: relative;
+              left: 0;
+              .danger{
+                background-color: lighten($danger-color, 0);
+                &:hover{
+                  background-color: lighten($danger-color, 0) !important;
+                  color: $light-color;
+                }
+              }
+              &:hover{
+                  background: darken($light-color,2);
+                  box-shadow: 0 0 3px darken($primary-color, 2);
+                  // border-left: 4px solid $primary-color;
+                  left: -10px;
+              }
+              td{
+                  font-size: 8pt;
+                  position: relative;
+                  &.status_indicator::after{
+                      content: '';
+                      display: block;
+                      height: 5px;
+                      position: absolute;
+                      top: 30%;
+                      border-radius: 50%;
+                      left: -2%;
+                      width: 5px;
+                  }
+                  &.status_indicator.success::after{
+                      background: $primary-color;
+                  }
+                  &.status_indicator.warning::after{
+                      background: $warning-color;
+                  }
+                  &.status_indicator.danger::after{
+                      background: $danger-color;
+                  }
+                  &.status_indicator.info::after{
+                      background: $info-color;
+                  }
+              }
+          }
+      }
+  }
+}

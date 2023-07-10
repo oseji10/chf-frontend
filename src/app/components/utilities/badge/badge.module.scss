@@ -1,0 +1,21 @@
+@import '../../misc/config';
+
+.badge{
+    padding: 3px 8px;
+    font-size: 9pt;
+    border-radius: 20px;
+    color: lighten($black, 30);
+    background-color: darken($light-color, 10);
+    &.danger{
+        color: darken($danger-color, 20);
+        background-color: lighten($danger-color, 40);
+    }
+    &.danger{
+        color: darken($warning-color, 20);
+        background-color: lighten($warning-color, 40);
+    }
+    &.primary{
+        color: darken($primary-color, 20);
+        background-color: lighten($primary-color, 40);
+    }
+}

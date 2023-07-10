@@ -1,0 +1,83 @@
+@import '../../components/misc/config';
+
+.profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-weight: 700;
+    border-bottom: 2px solid $light-color;
+    .badge{
+        font-size: 8pt;
+        padding: 5px;
+        color: $light-color;
+        font-weight: 700;
+        margin-left: 10px;
+        color: $light-color !important;
+        &.badge_success{
+            background-color: $primary-color;
+            &:hover{
+                background-color: darken($primary-color, 20);
+            }
+        }
+        &.badge_danger{
+            background-color: $danger-color;
+            &:hover{
+                background-color: darken($danger-color, 20);
+            }
+        }
+    }
+
+
+    span,a{
+        font-size: 8pt;
+        color: $dark-color;
+        cursor:pointer;
+    }
+
+    &.active{
+        a:first-of-type{
+            color: $primary-color;
+        }
+        .permissions{
+            padding: 10px;
+            height: 200px;
+            overflow-x: hidden;
+        }
+    }
+    
+}
+
+.hide{
+    display: none;
+}
+
+.show{
+    display: block;
+}
+
+.side_options{
+    min-height: 30vh;
+    .option{
+        span, a{
+            background-color: darken($light-color,50);
+            width: auto;
+            height: 20px;
+            text-align: center;
+            color: $light-color !important;
+            line-height: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            &:hover{
+                background-color: $primary-color;
+
+            }
+        }
+    }
+    .side_option_item{
+        font-size: 8pt;
+        display: block;;
+        display: flex;
+        justify-content: space-between;
+    }
+}

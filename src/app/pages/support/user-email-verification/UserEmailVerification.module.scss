@@ -1,0 +1,35 @@
+.profileContainer{
+    display: flex;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: white;
+    h3{
+        color: #555;
+        font-size: 1.3rem;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+    .profile{
+        flex: 2;
+    }
+    .tokens{
+        flex: 1;
+        ul{
+            max-height: 300px;
+            overflow-y: scroll;
+        }
+    }
+
+
+}
+
+@media screen and (max-width: 720px) {
+    .profileContainer{
+        flex-direction: column;
+        .profile,.tokens{
+         flex: 1;
+         width: 100%;   
+        }
+    }
+}

@@ -1,0 +1,13 @@
+
+.pageNumber{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: #ffffff;
+    padding: 20px 10px;
+    .next, .previous{
+        display: inline-block;
+        margin: 0px 10px;
+    }
+}

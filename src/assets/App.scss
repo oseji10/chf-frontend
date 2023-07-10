@@ -1,0 +1,164 @@
+@import '../app/components/misc/config';
+
+.auth_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    .auth_content{
+        background-color: #fff;
+        max-width: 600px;
+        width: 90%;
+        padding: 1rem;
+        .auth_header_image{
+            width: 100%;
+            margin: 0 auto;
+            img{
+                width: 100%;
+            }
+        }
+        form{
+            width: 100%;
+            max-width: 500px;
+            display: block;
+            margin: 0 auto;
+            background-color: #fff;
+            background-color: transparent;
+            input{
+                background-color: #fff;
+                margin: 1rem 0;
+                border: 1px solid #00000011 !important;
+                padding: 1rem;
+                border-radius: 1rem;
+            }
+            
+        }
+    }
+}
+
+input{
+    border-radius: 1rem !important;;
+}
+
+label{
+    color: lighten(#000, 20);
+}
+
+.btn{
+    border-radius: 1rem !important;
+    min-width: 50px;
+}
+
+.form-group{
+    margin-bottom: 0;
+}
+
+.MuiTableHead-root{
+    &.MuiToolbar-regular{
+        background-color: green !important;
+        svg{
+            color: #fff !important;
+        }
+
+    }
+}
+
+.MuiTableCell-body{
+    font-size: 8pt;
+}
+
+.flexParent{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dashboardCard{
+    box-shadow: 0 0 10px rgba(100,100,100, .05);
+    border-radius: 10px;
+    margin: 1rem;
+    &.danger{
+        .icon{
+            svg{
+                fill: $danger-color;
+            }
+        }
+    }
+    
+    &.success{
+        .icon{
+            svg{
+                fill: $success-color;
+            }
+        }
+
+    }
+    
+    &.info{
+        .icon{
+            svg{
+                fill: $info-color;
+            }
+        }
+
+    }
+
+    &.dashboardCardSM{
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .icon, .cardDetail{
+        padding: .7rem;
+    }
+
+    .cardDetail{
+        .title{
+            font-size: 1.2rem;
+        }
+        .tag{
+            border-radius: 20px;
+            font-size: .7rem;
+            padding: .2rem;
+            background-color: darken(#fff, 20);
+            color: lighten(#000, 30);
+            text-align: center;
+            &.tagDanger{
+                background-color: lighten($danger-color, 30) ;
+                color: darken($danger-color, 30) ;
+            }
+            &.tagSuccess{
+                background-color: lighten($success-color, 30) ;
+                color: darken($success-color, 30) ;
+            }
+            &.tagInfo{
+                background-color: lighten($info-color, 30) ;
+                color: darken($info-color, 30) ;
+            }
+        }
+
+    }
+
+    .subtitle{
+        font-size: .9rem;
+        font-weight: 400;
+        color: lighten(#000, 40);
+    }
+
+    .smallCard{
+        max-width: 200px;
+        width: 100%;
+        border-radius: 20px;
+        border: 1px solid rgba(100,100,100, .1);
+        margin: 0 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        .title{
+            font-size: 2rem;
+            color: $success-color;
+            padding: 1rem;
+        }
+    }
+}

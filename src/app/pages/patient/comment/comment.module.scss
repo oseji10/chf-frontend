@@ -1,0 +1,45 @@
+@import '../../../components/misc/config';
+
+h3{
+    color: lighten($dark-color, 10);
+}
+
+.comments_wrapper{
+    width: 90%;
+    // border: 3px solid red;
+    max-width: 900px;
+    // max-height: 80vh;
+    padding: 2em;
+    width: 100%;
+    margin: auto;
+    .comment{
+        border-bottom: 3px solid $primary-color;
+        h3{
+            color: lighten($dark-color,30);
+        }
+        h2{
+            color: darken($primary-color,10);
+            
+        }
+        .badge{
+            color: $light-color !important;
+        }
+        overflow-y: scroll;
+        box-shadow: 0 0 10px $light-color;
+        background-color: darken($light-color,5);
+        margin: auto;
+        padding: 2em;
+        margin-bottom: 10px;
+        border-radius: 0  0 0 1em;
+        h3{
+            font-size: 12pt;
+        }
+        h2{
+            font-size: 14pt;
+            font-weight: 800;
+        }
+        p{
+            font-size: 10pt;
+        }
+    }
+}
