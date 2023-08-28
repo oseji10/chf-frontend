@@ -6,13 +6,19 @@ import API from '../../config/chfBackendApi';
 import { APPROVED, PENDING, REVIEWED } from '../../utils/constant.util';
 import { PageTitle, PageSpinner, TableData, TableRow, CHFTable, THead, Button, Icon, Modal, ModalHeader, ModalBody, InlineSearchBox, TablePagination, Tag } from '../../components';
 import MUIDataTables from 'mui-datatables';
+import { toast } from "react-toastify";
+import styles from "./billingHistory.module.scss";
+import { timestampToRegularTime } from "../../utils/date.util";
 
+import ModalFooter from '../../components/modal/modalFooter';
 const initial_state = {
     patients: [],
+
     patientsRepository: [],
     isLoadingPatients: false,
     date: null,
     activePatient: null,
+    activeHistory: null,
     patientSearchInputValue: '',
     pagination: {
         per_page: 10,
@@ -25,9 +31,32 @@ const initial_state = {
     },
 }
 
+
+
 const WalletTopup = () => {
     const [state, setState] = useState(initial_state)
+    // const loadHistory= async () => {
+    //     try {
+    //       setStateValue("dataLoading", true);
+    //       const res = await Promise.all([
+    //         API.get(
+    //           `/api/wallet-topup/${state.chf_id}`
+    //         ),
+    //         // CAPBackendAPI.get('/product')
+    //       ]);
+    //       console.log(res)
+    //       setState((prevState) => ({
+    //         ...prevState,
+    //         histories: res,
+    //         // console.log(e)
+            
+    //         dataLoading: false,
+    //       }));
+    //     } catch (e) {
+    //     }
+    //   };
 
+   
     /* LOAD DATA TO INITIALIZE PAGE */
     const loadData = async () => {
         setStateValue('isLoadingPatients', true)
@@ -148,22 +177,25 @@ const WalletTopup = () => {
     const handleWalletTopup = async (patient) => {
         setStateValue('isTopingUp', true);
         try {
+            // console.log(state.activePatient?.chf_id)
           const res = await API.post(`/api/wallet-topup`, {
-            patient_chf_id: patient?.chf_id,
-            amount_requested: "5000",
+            patient_chf_id: state.activePatient?.chf_id,
+            
+            amount_requested: state.topupAmount,
           });
           // Handle the response if necessary
           console.log(res.data);
           // Update the status of the resolved dispute in the state
-          setState(prevState => ({
-            ...prevState,
-            patients: prevState.patients.map(prevDispute => {
-              if (prevPatient.chf_id === patient.chf_id) {
-                return { ...prevPatient, amount_requested: '5000' };
-              }
-              return prevPatient;
-            })
-          }));
+    //       setState(prevState => ({
+    //         ...prevState,
+    //         patients: prevState.patients.map(prevDispute => {
+    //           if (prevPatient.chf_id === patient.chf_id) {
+    //             return { ...prevPatient, amount_requested: state.topupAmount };
+    //           }
+    //         //   return prevPatient;
+    //     })
+    // }));
+    return toast.success('Wallet topup has been initiated')
         } catch (e) {
           // Handle the error if necessary
           console.error(e);
@@ -171,6 +203,38 @@ const WalletTopup = () => {
           setStateValue('isTopingUp', false);
         }
       };
+
+      const handleCloseModal = () => {
+        setState((prevState) => ({
+          ...prevState,
+          activeTransaction: null,
+        }));
+      };
+
+      const [isHistoryModalOpen, setIsHistoryModalOpen] = useState(false);
+
+    //   const [topupHistory, setTopupHistory] = useState(null);
+      const [topupHistory, setTopupHistory] = useState([]);
+
+      const handleHistoryClick = async (index) => {
+        const clickedPatient = state.patients[index];
+        // console.log(clickedPatient)
+        try {
+            setStateValue('dataLoading', true);
+            const response = await API.get(`/api/wallet-topup/${clickedPatient.user_id}`);
+            setTopupHistory(response.data.data); // Set the top-up history data
+            console.log(response.data.data);
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setStateValue('dataLoading', false);
+        }
+        setIsHistoryModalOpen(true);
+        setState((prevState) => ({
+            ...prevState,
+            activeHistory: clickedPatient,
+        }));
+    };
 
 
     return <div className='container'>
@@ -194,16 +258,21 @@ const WalletTopup = () => {
                  formatAsMoney(patient.wallet?.balance),
                         // patient.mdt_recommended_amount && REVIEWED || PENDING,
                         <>
-                            <Link to={`/mdt/patients/${patient.chf_id}/wallet-topup-history`}>
-                                <Button variant='success'>
+                            
+                                <Button 
+                                onClick={() => handleHistoryClick(index)}
+                                variant='success'>
+                                
+                                
                                     Topup History <Icon icon='fa fa-book' />
                                 </Button>
-                            </Link>
+                            
                             <Button
-                                // onClick={() => setStateValue('activePatient', patient)}
-                                onClick={() => handleWalletTopup(patient)}
+                                onClick={() => setStateValue('activePatient', patient)}
+                                // onClick={() => handleWalletTopup(patient)}
                                 variant='secondary ml-2'> Request for Topup <Icon icon='fa fa-plus' />
                             </Button>
+                            
                             {/* <Button
   onClick={() => handleResolveDispute(dispute)}
   variant='warning'
@@ -220,15 +289,92 @@ const WalletTopup = () => {
             </div>
         </div>
 
-        {state.activePatient && <Modal fullscreen>
-            <ModalHeader modalTitle="Care Plan" onModalClose={() => setStateValue('activePatient', null)} />
-            <ModalBody>
-                <h3>{formatName(state.activePatient.user)}</h3>
-                <p> <strong>Recommended Fund: {formatAsMoney(state.activePatient.mdt_recommended_fund ? state.activePatient.mdt_recommended_fund : 0)}</strong> </p>
-                <hr />
-                {state.activePatient.care_plan ? state.activePatient.care_plan : "No care plan available"}
-            </ModalBody>
-        </Modal>}
+        {state.activeHistory && (
+                <Modal  isOpen={isHistoryModalOpen} onClose={() => setIsHistoryModalOpen(false)}>
+                    <ModalHeader
+                        modalTitle={"Wallet Topup History"}
+                        onModalClose={handleCloseModal}
+                    />
+                    <ModalBody>
+                        <div className={["row", styles.billing_details].join(" ")}>
+                            <div className="col-sm-12">
+                                <h6 className={[styles.underlined, "text-success"].join(" ")}>
+                                    List
+                                </h6>
+                                <table className="table table-responsive-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Date Initiated</th>
+                                            <th>Amount Requested</th>
+                                            {/* <th>Requested By</th> */}
+                                            <th>Amount Approved</th>                                            
+                                            {/* <th>Approved By</th> */}
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {topupHistory &&
+                                            topupHistory.map((historyItem, index) => (
+                                                <tr key={index}>
+                                                    <td>{index + 1}</td>
+                                                    <td>{timestampToRegularTime(historyItem.requested_on)}</td>
+                                                    <td>{formatAsMoney(historyItem.amount_requested)}</td>
+                                                    {/* <td>{historyItem.requester_id}</td> */}
+                                                    <td>{formatAsMoney(historyItem?.amount_credited)}</td>
+                                                    
+                                                    {/* <td>{historyItem.credited_by}</td> */}
+                                                </tr>
+                                            ))}
+                                        {/* <tr>
+                                            <th>Total</th>
+                                            <td colSpan="4">&nbsp;</td>
+                                        </tr> */}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </ModalBody>
+                </Modal>
+            )}
+
+
+
+
+      {state.activePatient && (
+        <Modal >
+          <ModalHeader
+            // modalTitle="Topup"
+           
+            modalTitle={`Topup Wallet for - ${state.activePatient?.user.first_name + ' ' + state.activePatient?.user.last_name}`}
+            onModalClose={() => setStateValue("activePatient", null)}
+          />
+          <ModalBody>
+            <div className="form-group">
+              <label className="text-secondary">Enter Amount To Topup</label>
+              {/* <input
+                className="form-control"
+                required
+                value={state.editServiceName}
+                onChange={(e) => setStateValue(e.target.name, e.target.value)}
+                name="topupAmount"
+              /> */}
+
+<input
+                    className="form-control"
+                    required
+                    value={state.topupAmount} 
+                    onChange={(e) => setStateValue('topupAmount', e.target.value)} 
+                    name="topupAmount"
+                />
+            </div>
+        </ModalBody>
+          <ModalFooter>
+            <button className="btn btn-success" onClick={handleWalletTopup}>
+              Topup
+            </button>
+          </ModalFooter>
+        </Modal>
+      )}
     </div>
 }
 

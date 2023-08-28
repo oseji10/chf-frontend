@@ -1,5 +1,12 @@
+// export const formatAsMoney = (value, decimals = 2) => {
+//     return (value).toFixed(decimals).replace(/\d(?=(\d{3})+\.)/g, '$&,')
+// }
+
 export const formatAsMoney = (value, decimals = 2) => {
-    return (value).toFixed(decimals).replace(/\d(?=(\d{3})+\.)/g, '$&,')
+    if (typeof value !== 'number') {
+        return '0.00';
+    }
+    return value.toFixed(decimals).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 }
 
 

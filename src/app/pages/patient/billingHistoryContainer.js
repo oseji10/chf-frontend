@@ -230,7 +230,7 @@ function BillingHistoryContainer() {
       }));
 
       setDisputeComment('');
-      return toast.success('Dispute has be raised on the transaction')
+      return toast.success('Dispute has been raised on the transaction')
     } catch (error) {
       toast.error(formatErrorsToString(error))
     } finally {
