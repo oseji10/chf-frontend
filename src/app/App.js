@@ -51,6 +51,7 @@ import CHFAdminBilling from "./pages/chfadmin/billing/CHFAdminBilling";
 import AdminDispute from "./pages/dispute/AdminDispute";
 import HospitalDispute from "./pages/dispute/coeAdmin";
 import WalletTopup from "./pages/coeadmin/wallet-topup";
+import WalletTopupApprove from "./pages/chfadmin/wallet-topup";
 
 
 function App(props) {
@@ -156,6 +157,7 @@ function App(props) {
             <ProtectedRoute exact path="/coeadmin/patient-transfer" Component={COEAdminPatientTransfer} />
             <ProtectedRoute exact path="/coeadmin/dispute" Component={HospitalDispute} />
             <ProtectedRoute exact path="/coeadmin/wallet-topup" Component={WalletTopup} />
+            <ProtectedRoute exact path="/chfadmin/wallet-topup" Component={WalletTopupApprove} />
             <ProtectedRoute exact path="/superadmin/billings/:coe_id?" Component={SuperAdminBillingHistory} />
             <ProtectedRoute exact path='/superadmin/transactions/dispute' Component={AdminDispute} />
             <ProtectedRoute exact path="/superadmin/transactions" Component={CHFAdminBilling} />
