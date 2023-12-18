@@ -14,6 +14,7 @@ import { connect } from "react-redux";
 import AuthorizedOnlyComponent from "../../../components/authorizedOnlyComponent";
 import PageTitle from "../../../components/pageTitle/pageTitle";
 import { Link } from "react-router-dom";
+import ModalFooter from '../../../components/modal/modalFooter';
 
 const initialState = {
   coes: [],
@@ -311,7 +312,7 @@ function COE() {
         </div>
         <div className={styles.flex_cc}>
           <small>
-            <strong>Wallet:</strong>
+            <strong>Wallet Utilization:</strong>
           </small>
           <small>
             {activeCOE.wallet ? (
@@ -319,6 +320,18 @@ function COE() {
             ):`0.00`}
           </small>
         </div>
+
+        {/* <div className={styles.flex_cc}>
+          <small>
+            <strong>Wallet Balance:</strong>
+          </small>
+          <small>
+            {activeCOE.wallet ? (
+              <><del>N</del> {formatAsMoney(activeCOE.wallet.balance)}</>
+            ):`0.00`}
+          </small>
+        </div> */}
+
         <AuthorizedOnlyComponent requiredPermission={`VIEW_CHF_REPORT`}>
         <div className={styles.footer}>
           <Link to={`/superadmin/billings/${state.activeCoe.id}?`}>
@@ -329,7 +342,20 @@ function COE() {
             View billing history
           </span>
           </Link>
+
+&nbsp;
+          {/* <Link to={`/superadmin/billings/${state.activeCoe.id}?`}> */}
+          <span
+            className="btn btn-sm btn-warning"
+            // onClick={() => handleEditChange(true, state.activeCoe)}
+            onClick={() => setStateValue('activePatient', patient)}
+          >
+            Topup Wallet
+          </span>
+          {/* </Link> */}
         </div>
+
+        
         </AuthorizedOnlyComponent>
       </>
     );
@@ -346,6 +372,44 @@ function COE() {
       loadCOES();
     }
   };
+
+ 
+    <Modal >
+      <ModalHeader
+        // modalTitle="Topup"
+       
+        modalTitle={`Approve Wallet Topup for - ${state.activePatient?.user.first_name + ' ' + state.activePatient?.user.last_name}`}
+        onModalClose={() => setStateValue("activePatient", null)}
+      />
+      <ModalBody>
+        <div className="form-group">
+        <h4 className="text-primary">Requested Amount: {formatAsMoney(state.activePatient?.amount_requested)}</h4><br/>
+          <label className="text-secondary">Enter Amount To Approve</label>
+          {/* <input
+            className="form-control"
+            required
+            value={state.editServiceName}
+            onChange={(e) => setStateValue(e.target.name, e.target.value)}
+            name="topupAmount"
+          /> */}
+
+<input
+                className="form-control"
+                required
+                value={state.approvedAmount} 
+                onChange={(e) => setStateValue('approvedAmount', e.target.value)} 
+                name="approvedAmount"
+            />
+        </div>
+    </ModalBody>
+      <ModalFooter>
+        <button className="btn btn-success" onClick={handleWalletTopup}>
+          Topup
+        </button>
+      </ModalFooter>
+    </Modal>
+  
+
   return (
     <div>
       <div className={`container ${styles.coe_wrapper}`}>
@@ -398,8 +462,9 @@ function COE() {
                     <th colSpan="3">COE NAME</th>
                     <th>Type</th>
                     <th>COE State</th>
-                    <th colSpan="2">COE Address</th>
-                    <th>Wallet</th>
+                    <th colSpan="1">COE Address</th>
+                    <th>Wallet Utilization</th>
+                    
                   </tr>
                 </thead>
                 <tbody style={{ overflowX: "scroll" }}>{renderCOEList()}</tbody>

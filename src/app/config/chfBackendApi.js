@@ -38,7 +38,7 @@ export const CAPBackendAPI = axios.create({
 
 /* THIS ACCESSES CHF API VERSION 2.0 */
 export const CHFBackendAPI = axios.create({
-  baseURL: `${CHF_BACKEND_HOST}/api/v2`,
+  baseURL: `${CHF_BACKEND_HOST}api/v2`,
   headers: {
     'content-type': "application/json"
   }

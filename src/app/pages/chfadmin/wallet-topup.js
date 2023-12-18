@@ -258,19 +258,22 @@ const WalletTopupApprove = () => {
                         // patient.mdt_recommended_amount && REVIEWED || PENDING,
                         <>
                             
-                                <Button 
-                                onClick={() => handleHistoryClick(index)}
-                                variant='success'>
-                                
-                                
-                                    Topup History <Icon icon='fa fa-book' />
-                                </Button>
-                            
-                            <Button
-                                onClick={() => setStateValue('activePatient', patient)}
-                                // onClick={() => handleWalletTopup(patient)}
-                                variant='secondary ml-2'> Request for Topup <Icon icon='fa fa-plus' />
-                            </Button>
+                            {patient?.status === 'credited' ? (
+  <p>Already credited</p>
+) : (
+  <>
+    <Button 
+      onClick={() => handleHistoryClick(index)}
+      variant='success'>
+      Topup History <Icon icon='fa fa-book' />
+    </Button>
+    <Button
+      onClick={() => setStateValue('activePatient', patient)}
+      variant='secondary ml-2'>
+      Request for Topup <Icon icon='fa fa-plus' />
+    </Button>
+  </>
+)}
                             
                             {/* <Button
   onClick={() => handleResolveDispute(dispute)}
