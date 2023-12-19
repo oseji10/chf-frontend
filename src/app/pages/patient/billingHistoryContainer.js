@@ -302,7 +302,7 @@ function BillingHistoryContainer() {
                 color="default"
                 onClick={() => handleTransactionClick(index)}
                 size="small" >Detail</Button>,
-              (!transaction.is_disputed && !transaction.cmd_approved_on && <Button
+              (!transaction.is_disputed && <Button
                 variant="contained"
                 color="secondary"
                 onClick={() => handleShowDisputeModal(transaction)}
