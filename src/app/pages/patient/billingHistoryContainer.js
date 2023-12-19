@@ -307,7 +307,7 @@ function BillingHistoryContainer() {
                 color="secondary"
                 onClick={() => handleShowDisputeModal(transaction)}
                 size="small" >Dispute</Button>),
-              transaction.is_disputed,
+              // transaction.is_disputed,
             ])}
           />
         </div>
